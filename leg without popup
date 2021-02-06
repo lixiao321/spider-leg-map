@@ -1,0 +1,429 @@
+!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Syria</title>
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://bewithjonam.github.io/mapboxgl-spiderifier/index.css"
+    />
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.2/lodash.js"
+    ></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.js"></script>
+    <script
+      type="text/javascript"
+      src="https://bewithjonam.github.io/mapboxgl-spiderifier/index.js"
+    ></script>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+      }
+      .spider-leg-container .spider-leg-pin {
+        position: relative;
+        width: 22px;
+        height: 22px;
+        margin-left: -8px;
+        margin-top: -18px;
+        background-image: url(https://api.mapbox.com/styles/v1/mapbox/dark-v9/sprite.png?access_token=pk.eyJ1Ijoic29jcmF0YSIsImEiOiJjaXJxc2wzam0waGU5ZmZtODhqd2ttamdxIn0.1ZQEByXoDD7fGIa9lUHIqg);
+        background-position: -110px -110px;
+      }
+      .spider-leg-container .spider-leg-line {
+        background-color: #3300cc;
+      }
+      .spider-leg-container:hover .spider-leg-line {
+        background-color: #ff0000;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      mapboxgl.accessToken =
+        "pk.eyJ1IjoibGl4aWFvMTIzIiwiYSI6ImNraHM5b3psbTBsbzIycW5wdTQ0MmlydXcifQ.sSoggLjmbjQzL0H_A8dD2Q";
+      var map = new mapboxgl.Map({
+        container: "map",
+        style: "mapbox://styles/mapbox/dark-v10",
+        center: [40.876, 34.577],
+        zoom: 5.81
+      });
+
+      spiderifier = new MapboxglSpiderifier(map, { customPin: true });
+      map.on("load", function() {
+        map.addSource("places", {
+          type: "geojson",
+          cluster: true,
+          clusterMaxZoom: 14, // Max zoom to cluster points on
+          clusterRadius: 50,
+          data: {
+            type: "FeatureCollection",
+            features: [
+              {
+                type: "Feature",
+                properties: {
+                  description:
+                    "<strong>Grand Mosque</strong><p>Al Jazeera reported that on August 28, 2011, security forces bombarded the minaret of the Grand Mosque in Abu Kamal. <br><br><strong>Date: August 28, 2011</strong></p>"
+                },
+                geometry: {
+                  type: "Point",
+                  coordinates: [40.920403, 34.4533929]
+                }
+              },
+              {
+                type: "Feature",
+                properties: {
+                  description:
+                    "<strong>Khaled bin Walid Mosque</strong><p>Trend News Agency reported that on Wednesday August 7, 2011 Syrian security forces swept through Homs and fired at the Khaled bin Walid Mosque. Six people were killed in the attacks. <br><br><strong>Date: August 31, 2011</strong></p>"
+                },
+                geometry: {
+                  type: "Point",
+                  coordinates: [36.71564755, 34.73660195]
+                }
+              },
+              {
+                type: "Feature",
+                properties: {
+                  description:
+                    "<strong>Tawhid Mosque</strong><p>Xinhua News Agency reported that on September 30, 2011 an explosive device planted by a mosque in Douma was dismantled. Three explosive experts were killed during the process.<br><br><strong>Date: September 30, 2011</strong></p>"
+                },
+                geometry: {
+                  type: "Point",
+                  coordinates: [36.3919504, 33.5647901]
+                }
+              },
+              {
+                type: "Feature",
+                properties: {
+                  description:
+                    "<strong>Statue of President Hafez al-Assad</strong><p>Pretoria News reported that on October 10, 2011, protestors tore down a statue of Hafez Assad in Qamlishi. Protestors were primarily Kurdish. Hafez Assad is the late father of Bashar al-Assad.<br><br><strong>Date: October 8, 2011</strong></p>"
+                },
+                geometry: {
+                  type: "Point",
+                  coordinates: [41.2226544, 37.052209]
+                }
+              },
+              {
+                type: "Feature",
+                properties: {
+                  description:
+                    "<strong>The Omari Mosque</strong><p>BBC Monitoring Middle East reported that on October 15, 2011 armed terrorist groups planted three explosive devices intended to cause damage to Al Omari mosque in Daraa.<br><br><strong>Date: October 15, 2011</strong></p>"
+                },
+                geometry: {
+                  type: "Point",
+                  coordinates: [36.1009302, 32.6123399]
+                }
+              },
+              {
+                type: "Feature",
+                properties: {
+                  description:
+                    "<strong>Khalid Ibn al-Walid mosque and mausoleum</strong><p>BBC Monitoring Middle East reported that on November 16, 2011 Shabiha pro-government gunmen allegedly shelled the Khaled Bin al-Walid Mosque in Homs. According to the Syrian Observatory for Human Rights, about 50 people were killed.<br><br><strong>Date: December 15, 2011</strong></p>"
+                },
+                geometry: {
+                  type: "Point",
+                  coordinates: [36.71564755, 34.73660195]
+                }
+              },
+              {
+                type: "Feature",
+                properties: {
+                  description:
+                    "<strong>Grand Mosque of Douma</strong><p>BBC Monitoring Middle East reported that on December 9, 2011 the Syrian army planted an explosive outside the Grand Mosque of Douma. The Grand Mosque of Douma is one of the largest mosques in the suburbs of Damascus. It was first built in 1136 and rebuilt in 1983.<br><br><strong>Date: December 9, 2011</strong></p>"
+                },
+                geometry: {
+                  type: "Point",
+                  coordinates: [36.4008424, 33.5714466]
+                }
+              },
+              {
+                type: "Feature",
+                properties: {
+                  description:
+                    "<strong>Hassiba Mosque</strong><p>BBC Monitoring Middle East reported that on December 9, 2011 the Syrian army planted an explosive outside the Hasibeh Mosque.<br><br><strong>Date: December 9, 2011</strong></p>"
+                },
+                geometry: {
+                  type: "Point",
+                  coordinates: [36.4026455, 33.5720143]
+                }
+              },
+              {
+                type: "Feature",
+                properties: {
+                  description:
+                    "<strong>Al-Rawda Mosque</strong><p>BBC Monitoring Middle East reported that on December 30, 2011 an armed terrorist group detonated an explosive near al-Rawda mosque in Dayr al Zawr causing no casualties.<br><br><strong>Date: December 30, 2011</strong></p>"
+                },
+                geometry: {
+                  type: "Point",
+                  coordinates: [36.286815, 33.438414]
+                }
+              },
+              {
+                type: "Feature",
+                properties: {
+                  description:
+                    "<strong>Abdul Rahman Bin Auf mosque</strong><p>BBC Monitoring Middle East reported that on December 30, 2011 gunmen planted two explosives planted near Abdul Rahman Bin Auf Mosque in Hama. They were dismantled by engineering units before causing any damage or casualties.<br><br><strong>Date: December 30, 2011</strong></p>"
+                },
+                geometry: {
+                  type: "Point",
+                  coordinates: [36.775156, 35.145195]
+                }
+              },
+              {
+                type: "Feature",
+                properties: {
+                  description:
+                    "<strong>Baba Amr Mosque</strong><p>Trend News Agency (Azerbaijan) reported that on January 17, 2012, Syrian security forces shelled a mosque in the area of Baba Amr, killing eight and wounding five.<br><br><strong>Start Date: January 17, 2012 </strong></p>"
+                },
+                geometry: {
+                  type: "Point",
+                  coordinates: [36.688009, 34.712456]
+                }
+              },
+              {
+                type: "Feature",
+                properties: {
+                  description:
+                    "<strong>Mosque of Abdul Rahman bin Auf</strong><p>BBC Monitoring Middle East reported that on January 18, 2012, army and security forces targeted a minaret of the Abd al-Rahman Bin-Awf Mosque in Homs. The Mosque was named for one of the companions of prophet Muhammad.<br><br><strong>Date: January 1-January 18, 2012</strong></p>"
+                },
+                geometry: {
+                  type: "Point",
+                  coordinates: [36.7176405, 34.7220868]
+                }
+              },
+              {
+                type: "Feature",
+                properties: {
+                  description:
+                    "<strong>Convent of Our Lady of Sednaya</strong><p> BBC Monitoring Middle East reported that on February 1, 2012, terrorists fired shells at the archaeological Convent of the Lady of Saydnaya in Damascus countryside. Our Lady of Saydnaya Patriarchal Monastery is a Greek Orthodox Monastery thatis one of the most ancient monasteries in the world, and was founded by Byzantine emperor Justinian I in 547 AD.<br><br><strong>Date: January 29, 2012</strong></p>"
+                },
+                geometry: {
+                  type: "Point",
+                  coordinates: [36.374976, 33.699442]
+                }
+              },
+              {
+                type: "Feature",
+                properties: {
+                  description:
+                    "<strong>Palmyra</strong><p>BBC Monitoring Newsfile reported that on February 10, 2012, authorities raided farms south of Palmyra City in the Homs countryside and found 16 stolen archaeological pieces.Agence France Presse Reported that since early February 2012, the Syrian army has been laying siege to the ancient city of Palmyra. The ancient city of Palmyra is a UNESCO World Heritage Site that was prominent in the Roman Period.<br><br><strong>Date: March 15, 2011-February 19, 2012</strong></p>"
+                },
+                geometry: {
+                  type: "Point",
+                  coordinates: [38.291879, 34.571346]
+                }
+              },
+              {
+                type: "Feature",
+                properties: {
+                  description:
+                    "<strong>Palmyra</strong><p>BBC Monitoring Newsfile reported that on February 10, 2012, authorities raided farms south of Palmyra City in the Homs countryside and found 16 stolen archaeological pieces.Agence France Presse Reported that since early February 2012, the Syrian army has been laying siege to the ancient city of Palmyra. The ancient city of Palmyra is a UNESCO World Heritage Site that was prominent in the Roman Period.<br><br><strong>Date: March 15, 2011-February 19, 2012</strong></p>"
+                },
+                geometry: {
+                  type: "Point",
+                  coordinates: [38.291879, 34.571346]
+                }
+              },
+              {
+                type: "Feature",
+                properties: {
+                  description:
+                    "<strong>Baba Amr Mosque</strong><p>Trend News Agency (Azerbaijan) reported that on January 17, 2012, Syrian security forces shelled a mosque in the area of Baba Amr, killing eight and wounding five. Trend News Agency (Azerbaijan) reported that on February 21, 2012, government troops shelled the Baba Amr Mosque.The Syrian Observatory for Human Rights reported that several people were killed in the incident.<br><br><strong>Date: February 17, 2012 and February 21, 2012</strong></p>"
+                },
+                geometry: {
+                  type: "Point",
+                  coordinates: [36.688009, 34.712456]
+                }
+              },
+              {
+                type: "Feature",
+                properties: {
+                  description:
+                    "<strong>The Omari Mosque</strong><p>Cape Times reported that around March 8, 2012, the Syrian army shelled the al-Omari mosque in Homs. This shelling came after the mosque had been used to broadcast news about the uprising. This mosque had been converted from a Roman temple that was more than 2,000 years old.<br><br><strong>Date: March 7, 2012</strong></p>"
+                },
+                geometry: {
+                  type: "Point",
+                  coordinates: [36.1009302, 32.6123399]
+                }
+              }
+            ]
+          }
+        });
+
+        map.addLayer({
+          id: "clusters",
+          type: "circle",
+          source: "places",
+          filter: ["has", "point_count"],
+          paint: {
+            "circle-color": [
+              "step",
+              ["get", "point_count"],
+              "#51bbd6",
+              1,
+              "#f1f075",
+              3,
+              "#f28cb1"
+            ],
+            "circle-radius": ["step", ["get", "point_count"], 20, 1, 30, 3, 40]
+          }
+        });
+
+        map.addLayer({
+          id: "cluster-count",
+          type: "symbol",
+          source: "places",
+          filter: ["has", "point_count"],
+          layout: {
+            "text-field": "{point_count_abbreviated}",
+            "text-font": ["DIN Offc Pro Medium", "Arial Unicode MS Bold"],
+            "text-size": 18
+          }
+        });
+
+        map.addLayer({
+          id: "unclustered-point",
+          type: "circle",
+          source: "places",
+          filter: ["!", ["has", "point_count"]],
+          paint: {
+            "circle-color": "#11b4da",
+            "circle-radius": 4,
+            "circle-stroke-width": 1,
+            "circle-stroke-color": "#fff"
+          }
+        });
+
+        map.on("click", mouseClick);
+
+        map.on("mouseenter", "clusters", function(e) {
+          map.getCanvas().style.cursor = "pointer";
+        });
+
+        map.on("mouseleave", "clusters", function(e) {
+          map.getCanvas().style.cursor = "";
+        });
+
+        map.on("click", "clusters", function(e) {
+          var features = map.queryRenderedFeatures(e.point, {
+            layers: ["clusters"]
+          });
+
+          if (!features.length) {
+            return;
+          }
+
+          SPIDERFY_FROM_ZOOM = 10;
+          if (map.getZoom() > SPIDERFY_FROM_ZOOM) {
+            var clusterId = features[0].properties.cluster_id;
+            map
+              .getSource("places")
+              .getClusterExpansionZoom(clusterId, function(err, zoom) {
+                if (err) return;
+                map.easeTo({
+                  center: features[0].geometry.coordinates,
+                  zoom: map.getZoom() - 4
+                });
+              });
+          }
+
+          if (map.getZoom() < SPIDERFY_FROM_ZOOM) {
+            spiderifier.unspiderfy();
+            map
+              .getSource("places")
+              .getClusterLeaves(
+                features[0].properties.cluster_id,
+                100,
+                0,
+                function(err, leafFeatures) {
+                  if (err) {
+                    return console.error(
+                      "error while getting leaves of a cluster",
+                      err
+                    );
+                  }
+                  var markers = _.map(leafFeatures, function(leafFeature) {
+                    return leafFeature.properties;
+                  });
+                  spiderifier.spiderfy(
+                    features[0].geometry.coordinates,
+                    markers
+                  );
+                }
+              );
+          }
+        });
+
+        function mouseClick(e) {
+          spiderifier.unspiderfy();
+        }
+
+        var popup = new mapboxgl.Popup({
+          closeButton: false,
+          closeOnClick: false
+        });
+
+        map.on("mouseenter", "unclustered-point", function(e) {
+          map.getCanvas().style.cursor = "pointer";
+
+          var coordinates = e.features[0].geometry.coordinates.slice();
+          var description = e.features[0].properties.description;
+
+          while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+          }
+
+          popup
+            .setLngLat(coordinates)
+            .setHTML(description)
+            .addTo(map);
+        });
+
+        map.on("mouseleave", "unclustered-point", function() {
+          map.getCanvas().style.cursor = "";
+          popup.remove();
+        });
+
+
+        //Popup boxes on pins are below but they don't work
+
+        var spiderifier = new MapboxglSpiderifier(map, {customPin: true});
+        var popup = new mapboxgl.Popup({
+        closeButton: true,
+        closeOnClick: false,
+        offset: MapboxglSpiderifier.popupOffsetForSpiderLeg(spiderLeg)
+      });
+
+      popup.setHTML(description);
+      popup.setLngLat(coordinates)
+      spiderLeg.mapboxMarker.setPopup(popup);
+      popup.addTo(map)
+
+      $(spiderLeg.elements.container)
+        .on('mouseenter', function(){
+          popup.addTo(map);
+        map.getCanvas().style.cursor = "pointer";
+        })
+        .on('mouseleave', function(){
+        map.getCanvas().style.cursor = "";
+          popup.remove();
+      });
+    </script>
+  </body>
+</html>
